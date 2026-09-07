@@ -3,80 +3,1180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PMESP RP | Central Operacional</title>
+<title>Sistema PMESP Operacional</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#080d13;color:#e9eef5;font-family:Arial,Helvetica,sans-serif}
-.app{display:flex;min-height:100vh}
-aside{width:245px;background:#0b1118;border-right:1px solid #202c38;padding:24px 15px;display:flex;flex-direction:column}
-.brand{display:flex;gap:12px;align-items:center;padding:8px 10px 30px}.shield{width:42px;height:48px;border:1px solid #506b84;background:#13202d;display:grid;place-items:center;font-size:21px}
-.brand b{display:block;letter-spacing:1.5px}.brand small{display:block;color:#75879a;font-size:9px;letter-spacing:2px;margin-top:4px}
-nav{border-top:1px solid #1d2833;padding-top:15px}nav button{width:100%;background:transparent;border:0;color:#8191a2;text-align:left;padding:13px;border-radius:7px;margin:2px 0;font-size:13px;cursor:pointer}nav button:hover,nav button.active{background:#152330;color:#eef6fd}
-.user{margin-top:auto;border-top:1px solid #1d2833;padding:17px 7px 0;color:#b7c5d2;font-size:12px}.user small{display:block;color:#697d90;margin-top:5px}
-main{flex:1;padding:32px 42px;max-width:1450px;margin:auto;width:100%}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.crumb{font-size:9px;color:#71859a;letter-spacing:2px}h1{font-size:25px;margin:7px 0}.live{color:#5ed098;font-size:10px;letter-spacing:1px}
-.hero{background:linear-gradient(115deg,#132231,#0c151e);border:1px solid #26394a;border-radius:10px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center}.tag{font-size:9px;color:#8aacc9;letter-spacing:2px}.hero h2{font-size:34px;line-height:1.12;margin:12px 0}.hero em{font-style:normal;color:#a8cce9}.hero p{font-size:12px;color:#8191a1;max-width:500px}.heroBadge{text-align:center;color:#9bb3c8;border-left:1px solid #2a3c4d;padding-left:45px}.heroBadge div{font-size:48px}.heroBadge small{display:block;color:#62768b;font-size:8px;letter-spacing:2px;margin-top:8px}
-button.primary,button.danger{border:0;border-radius:5px;padding:13px 18px;font-size:10px;font-weight:bold;letter-spacing:1px;cursor:pointer}.primary{background:#d9eafa;color:#112132}.danger{background:#80363d;color:white}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:16px 0}.stat,.panel{background:#0d151e;border:1px solid #202e3b;border-radius:8px}.stat{padding:19px}.stat i{font-style:normal;color:#80a8c9;font-size:21px}.stat b{display:block;font-size:22px;margin-top:7px}.stat small{color:#6f8193;font-size:8px;letter-spacing:1.2px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{padding:22px}.panel h2,.panel h3{margin:0;font-size:15px}.hidden{display:none}.statusBtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.statusBtns button,.quick button{background:#101b26;border:1px solid #2a3a4a;color:#9aabba;padding:10px;border-radius:5px;cursor:pointer}.statusBtns button.sel{background:#1b2d3e;color:#e3f0fb;border-color:#6d98bb}
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}.quick button{padding:16px;text-align:left}.quick b,.quick small{display:block;margin-top:5px}.quick small{font-size:8px;color:#718497}
-.bigTime{text-align:center;font-size:55px;margin:65px 0 8px;letter-spacing:3px}.center{text-align:center;color:#738598;font-size:12px}.center button{margin-top:20px}.notice{margin-top:35px;padding:13px;background:#111b25;border:1px solid #263644;border-radius:6px;text-align:center;color:#718497;font-size:10px}
-.table{margin-top:20px;border:1px solid #202e3a;border-radius:6px;overflow:hidden}.row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;padding:14px;border-bottom:1px solid #1c2935;font-size:11px}.row:last-child{border:0}.green{color:#64d39c}.yellow{color:#d7b96a}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.vtr{border:1px solid #263644;background:#101923;padding:17px;border-radius:7px}.vtr b{display:block;font-size:15px}.vtr small{display:block;color:#718497;font-size:9px;margin:6px 0}.vtr button{width:100%;margin-top:10px;padding:9px;background:#172534;border:1px solid #304353;color:#c4dcec;font-size:9px}
-input{width:100%;padding:13px;background:#0a121a;border:1px solid #2b3a49;border-radius:5px;color:white;outline:none;margin-top:20px}.codegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.code{padding:18px;background:#101923;border:1px solid #263644;border-radius:6px}.code b{font-size:18px;color:#aacce7}.code span{display:block;color:#77899b;font-size:10px;margin-top:7px}
-.manual{line-height:1.8;color:#9aabba;font-size:12px;margin-top:15px}.manual h3{color:#e4edf5;margin-top:22px}.chat{min-height:280px;margin-top:15px}.empty{height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#718497}.empty b{color:#e5edf5}.msg{margin:12px 0}.you{padding:11px;background:#172737;border-radius:6px;font-size:11px}.bot{padding:12px;margin-top:6px;border-left:2px solid #789dbb;background:#101923;font-size:11px;color:#98a9b9}.ask{display:flex;gap:8px}.ask input{margin:0}.ask button{background:#d9eafa;border:0;border-radius:5px;padding:0 18px;font-weight:bold;font-size:9px}
-@media(max-width:800px){aside{width:64px;padding:18px 8px}.brand div:not(.shield),nav button{font-size:0}.user{font-size:0}.user small{display:none}main{padding:22px}.stats,.grid{grid-template-columns:1fr 1fr}.heroBadge{display:none}}@media(max-width:520px){.stats,.grid,.cards,.codegrid{grid-template-columns:1fr}.hero{padding:25px}.hero h2{font-size:28px}.quick{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.row span:nth-child(3){display:none}.bigTime{font-size:40px}}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1220;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* LOGIN */
+
+#loginScreen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:radial-gradient(circle at top,#18345c 0%,#0b1220 55%);
+}
+
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:#111c2e;
+    border:1px solid #263b59;
+    border-radius:16px;
+    padding:35px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+    text-align:center;
+}
+
+.logo{
+    width:85px;
+    height:85px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#1d4f91;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:bold;
+    border:3px solid #4d8bd8;
+}
+
+.login-box h1{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.login-box p{
+    color:#9fb0c7;
+    margin-bottom:25px;
+}
+
+.input{
+    width:100%;
+    padding:14px;
+    margin-bottom:14px;
+    background:#0b1423;
+    color:#fff;
+    border:1px solid #304661;
+    border-radius:8px;
+    outline:none;
+}
+
+.input:focus{
+    border-color:#4d8bd8;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#1d63b7;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#2877d2;
+}
+
+.demo{
+    margin-top:15px;
+    font-size:12px;
+    color:#71839b;
+}
+
+#erroLogin{
+    color:#ff6b6b;
+    margin-bottom:12px;
+    display:none;
+}
+
+/* SISTEMA */
+
+#system{
+    display:none;
+    min-height:100vh;
+}
+
+.topbar{
+    height:70px;
+    background:#111c2e;
+    border-bottom:1px solid #263b59;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:bold;
+}
+
+.brand-icon{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#1d63b7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.user-info{
+    color:#aabbd0;
+    font-size:14px;
+}
+
+.logout{
+    margin-left:15px;
+    padding:8px 13px;
+    background:#8f2929;
+    border:none;
+    border-radius:6px;
+    color:white;
+    cursor:pointer;
+}
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+    width:240px;
+    background:#0e1828;
+    border-right:1px solid #263b59;
+    padding:20px 12px;
+}
+
+.menu-title{
+    color:#647993;
+    font-size:11px;
+    text-transform:uppercase;
+    margin:10px 12px;
+}
+
+.menu-btn{
+    width:100%;
+    text-align:left;
+    padding:13px 14px;
+    margin-bottom:5px;
+    border:none;
+    border-radius:8px;
+    background:transparent;
+    color:#c8d5e5;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.menu-btn:hover,
+.menu-btn.active{
+    background:#19365b;
+    color:white;
+}
+
+.content{
+    flex:1;
+    padding:30px;
+    overflow-x:auto;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-title{
+    margin-bottom:25px;
+}
+
+.page-title h2{
+    font-size:27px;
+}
+
+.page-title p{
+    color:#8194ad;
+    margin-top:5px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#111c2e;
+    border:1px solid #263b59;
+    border-radius:12px;
+    padding:20px;
+}
+
+.card-title{
+    color:#8497b0;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.card-number{
+    font-size:30px;
+    font-weight:bold;
+}
+
+/* PAINEL */
+
+.panel{
+    background:#111c2e;
+    border:1px solid #263b59;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.panel h3{
+    margin-bottom:18px;
+}
+
+/* TABELA */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    text-align:left;
+    padding:13px;
+    border-bottom:1px solid #25364d;
+    font-size:14px;
+}
+
+th{
+    color:#8fa3bd;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-size:13px;
+    color:#a9bad0;
+}
+
+textarea.input{
+    min-height:120px;
+    resize:vertical;
+}
+
+.save-btn{
+    width:auto;
+    padding:12px 25px;
+    margin-top:15px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:15px;
+    font-size:11px;
+    background:#173e67;
+    color:#b9dcff;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .sidebar{
+        width:200px;
+    }
+}
+
+@media(max-width:650px){
+
+    .topbar{
+        padding:0 12px;
+    }
+
+    .user-info{
+        display:none;
+    }
+
+    .layout{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        display:flex;
+        overflow-x:auto;
+        padding:8px;
+    }
+
+    .menu-title{
+        display:none;
+    }
+
+    .menu-btn{
+        min-width:130px;
+        margin:0 3px;
+    }
+
+    .content{
+        padding:18px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+}
 </style>
 </head>
-<body>
-<div class="app">
-<aside>
-<div class="brand"><div class="shield">✦</div><div><b>PMESP RP</b><small>2º BP CHOQUE</small></div></div>
-<nav>
-<button class="active" onclick="showPage('dashboard',this)">⌂ Dashboard</button>
-<button onclick="showPage('ponto',this)">◷ Ponto</button>
-<button onclick="showPage('efetivo',this)">♙ Efetivo</button>
-<button onclick="showPage('vtr',this)">▣ Viaturas</button>
-<button onclick="showPage('radio',this)">⌁ Código Q</button>
-<button onclick="showPage('manual',this)">▤ Manual RP</button>
-<button onclick="showPage('ia',this)">✦ Assistente IA</button>
-</nav>
-<div class="user">👤 <b>CB Igor</b><small>● Operacional</small></div>
-</aside>
-<main>
-<header><div><span class="crumb">CENTRAL OPERACIONAL /</span><h1 id="title">Dashboard</h1></div><span class="live">● SISTEMA ONLINE</span></header>
 
-<section id="dashboard" class="page">
-<div class="hero"><div><span class="tag">CENTRAL OPERACIONAL</span><h2>Pronto para o serviço,<br><em>CB Igor.</em></h2><p>Acompanhe seu turno, equipe e recursos do servidor em um só lugar.</p><button id="mainBtn" class="primary" onclick="togglePoint()">▶ INICIAR SERVIÇO</button></div><div class="heroBadge"><div>✦</div><b>2º BP CHOQUE</b><small>PORTAL OPERACIONAL RP</small></div></div>
-<div class="stats"><div class="stat"><i>◷</i><b id="time1">00:00:00</b><small>TEMPO DE SERVIÇO</small></div><div class="stat"><i>♙</i><b>18</b><small>EM SERVIÇO</small></div><div class="stat"><i>▣</i><b>12</b><small>NA RUA</small></div><div class="stat"><i>!</i><b>03</b><small>OCORRÊNCIAS</small></div></div>
-<div class="grid"><div class="panel"><h3>Seu status <span id="currentStatus" class="green" style="float:right">● Disponível</span></h3><div class="statusBtns"><button class="sel" onclick="setStatus('Disponível',this)">Disponível</button><button onclick="setStatus('Patrulhamento',this)">Patrulhamento</button><button onclick="setStatus('Ocorrência',this)">Ocorrência</button><button onclick="setStatus('Intervalo',this)">Intervalo</button></div></div>
-<div class="panel"><h3>Acesso rápido</h3><div class="quick"><button onclick="go('radio')">⌁<b>Código Q</b><small>Consultar rádio</small></button><button onclick="go('vtr')">▣<b>Viaturas</b><small>Ver disponibilidade</small></button><button onclick="go('manual')">▤<b>Manual RP</b><small>Regras do RP</small></button></div></div></div>
+<body>
+
+<!-- LOGIN -->
+
+<section id="loginScreen">
+
+<div class="login-box">
+
+<div class="logo">PM</div>
+
+<h1>Sistema PMESP Operacional</h1>
+
+<p>Acesso ao painel operacional</p>
+
+<div id="erroLogin">
+Usuário ou senha incorretos.
+</div>
+
+<input
+type="text"
+id="usuario"
+class="input"
+placeholder="Usuário"
+>
+
+<input
+type="password"
+id="senha"
+class="input"
+placeholder="Senha"
+>
+
+<button class="btn" onclick="login()">
+ENTRAR
+</button>
+
+<div class="demo">
+Ambiente demonstrativo
+</div>
+
+</div>
+
 </section>
 
-<section id="ponto" class="page hidden"><div class="panel"><h2>Controle de Ponto</h2><div class="bigTime" id="time2">00:00:00</div><div class="center"><span id="pointText">Nenhum turno ativo</span><br><button id="pointBtn" class="primary" onclick="togglePoint()">BATER PONTO</button></div><div class="notice">Versão demonstrativa: para salvar os pontos permanentemente será necessário conectar um banco de dados.</div></div></section>
 
-<section id="efetivo" class="page hidden"><div class="panel"><h2>Efetivo Operacional</h2><div class="table"><div class="row"><b>Policial</b><b>Status</b><b>VTR</b><b>Tempo</b></div><div class="row"><span>CB Igor</span><span class="green">Patrulhamento</span><span>M-2102</span><span>02:31</span></div><div class="row"><span>SD Silva</span><span class="green">Ocorrência</span><span>M-2105</span><span>01:42</span></div><div class="row"><span>3º SGT Santos</span><span>Disponível</span><span>—</span><span>03:10</span></div><div class="row"><span>CB Oliveira</span><span class="yellow">Intervalo</span><span>—</span><span>00:18</span></div></div></div></section>
+<!-- SISTEMA -->
 
-<section id="vtr" class="page hidden"><div class="panel"><h2>Central de Viaturas</h2><div class="cards"><div class="vtr"><b>🚔 M-2101</b><small>Viatura de patrulhamento</small><span class="green">● Disponível</span><button>ASSUMIR VTR</button></div><div class="vtr"><b>🚔 M-2102</b><small>Viatura de patrulhamento</small><span class="yellow">● Em uso</span><button>VER EQUIPE</button></div><div class="vtr"><b>🚔 M-2103</b><small>Viatura de patrulhamento</small><span class="green">● Disponível</span><button>ASSUMIR VTR</button></div><div class="vtr"><b>🚔 M-2104</b><small>Viatura especial</small><span class="yellow">● Manutenção</span><button disabled>INDISPONÍVEL</button></div></div></div></section>
+<section id="system">
 
-<section id="radio" class="page hidden"><div class="panel"><h2>Código Q</h2><input id="searchCode" oninput="filterCodes()" placeholder="Pesquisar código ou significado..."><div class="codegrid" id="codes"></div></div></section>
+<header class="topbar">
 
-<section id="manual" class="page hidden"><div class="panel"><h2>Manual Operacional RP</h2><div class="manual"><h3>Antes de iniciar o patrulhamento</h3><ul><li>Confira o uniforme e os equipamentos permitidos pelas regras do servidor.</li><li>Confirme a equipe e a viatura que será utilizada no RP.</li><li>Revise as regras de comunicação e conduta.</li><li>Mantenha seu status atualizado durante o turno.</li></ul><h3>Uso do portal</h3><p>O portal serve para organizar o efetivo do seu servidor GTA RP. As regras, procedimentos e equipamentos podem ser personalizados pela administração.</p></div></div></section>
+<div class="brand">
 
-<section id="ia" class="page hidden"><div class="panel"><h2>Assistente IA</h2><div id="chat" class="chat"><div class="empty">🤖<b>Como posso ajudar?</b><span>Pergunte sobre códigos, VTRs, ponto ou regras do servidor.</span></div></div><div class="ask"><input id="question" placeholder="Digite sua dúvida..." onkeydown="if(event.key==='Enter')askAI()"><button onclick="askAI()">ENVIAR</button></div></div></section>
-</main></div>
+<div class="brand-icon">
+PM
+</div>
+
+<span>
+PMESP Operacional
+</span>
+
+</div>
+
+<div class="user-info">
+
+Usuário:
+<strong id="nomeUsuario">
+Operador
+</strong>
+
+<button class="logout" onclick="logout()">
+Sair
+</button>
+
+</div>
+
+</header>
+
+
+<div class="layout">
+
+<!-- MENU -->
+
+<aside class="sidebar">
+
+<div class="menu-title">
+Principal
+</div>
+
+<button
+class="menu-btn active"
+onclick="abrirPagina('dashboard',this)"
+>
+📊 Dashboard
+</button>
+
+<button
+class="menu-btn"
+onclick="abrirPagina('ocorrencias',this)"
+>
+📋 Ocorrências
+</button>
+
+<button
+class="menu-btn"
+onclick="abrirPagina('efetivo',this)"
+>
+👮 Efetivo
+</button>
+
+<button
+class="menu-btn"
+onclick="abrirPagina('viaturas',this)"
+>
+🚓 Viaturas
+</button>
+
+<div class="menu-title">
+Sistema
+</div>
+
+<button
+class="menu-btn"
+onclick="abrirPagina('novo',this)"
+>
+➕ Nova ocorrência
+</button>
+
+<button
+class="menu-btn"
+onclick="abrirPagina('sobre',this)"
+>
+ℹ️ Sobre
+</button>
+
+</aside>
+
+
+<!-- CONTEÚDO -->
+
+<main class="content">
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="page active">
+
+<div class="page-title">
+
+<h2>Dashboard</h2>
+
+<p>
+Visão geral do ambiente demonstrativo.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-title">
+OCORRÊNCIAS HOJE
+</div>
+
+<div
+class="card-number"
+id="totalOcorrencias"
+>
+12
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+VIATURAS DISPONÍVEIS
+</div>
+
+<div class="card-number">
+08
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+EFETIVO ONLINE
+</div>
+
+<div class="card-number">
+24
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+OCORRÊNCIAS EM ANDAMENTO
+</div>
+
+<div class="card-number">
+03
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+Últimas ocorrências
+</h3>
+
+<table>
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Tipo</th>
+<th>Local</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>#0012</td>
+<td>Apoio</td>
+<td>Área central</td>
+<td>
+<span class="badge">
+Em andamento
+</span>
+</td>
+</tr>
+
+<tr>
+<td>#0011</td>
+<td>Patrulhamento</td>
+<td>Setor Norte</td>
+<td>
+<span class="badge">
+Finalizada
+</span>
+</td>
+</tr>
+
+<tr>
+<td>#0010</td>
+<td>Atendimento</td>
+<td>Setor Sul</td>
+<td>
+<span class="badge">
+Finalizada
+</span>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- OCORRÊNCIAS -->
+
+<section id="ocorrencias" class="page">
+
+<div class="page-title">
+
+<h2>Ocorrências</h2>
+
+<p>
+Registro demonstrativo de ocorrências.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<table>
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Data</th>
+<th>Tipo</th>
+<th>Local</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody id="tabelaOcorrencias">
+
+<tr>
+<td>#0012</td>
+<td>07/09/2026</td>
+<td>Apoio</td>
+<td>Área central</td>
+<td>
+<span class="badge">
+Em andamento
+</span>
+</td>
+</tr>
+
+<tr>
+<td>#0011</td>
+<td>07/09/2026</td>
+<td>Patrulhamento</td>
+<td>Setor Norte</td>
+<td>
+<span class="badge">
+Finalizada
+</span>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- EFETIVO -->
+
+<section id="efetivo" class="page">
+
+<div class="page-title">
+
+<h2>Efetivo</h2>
+
+<p>
+Controle demonstrativo do efetivo.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Identificação</th>
+<th>Função</th>
+<th>Setor</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Operador 01</td>
+<td>Patrulhamento</td>
+<td>Setor Norte</td>
+<td>
+<span class="badge">
+Online
+</span>
+</td>
+</tr>
+
+<tr>
+<td>Operador 02</td>
+<td>Atendimento</td>
+<td>Setor Sul</td>
+<td>
+<span class="badge">
+Online
+</span>
+</td>
+</tr>
+
+<tr>
+<td>Operador 03</td>
+<td>Supervisão</td>
+<td>Área central</td>
+<td>
+<span class="badge">
+Online
+</span>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- VIATURAS -->
+
+<section id="viaturas" class="page">
+
+<div class="page-title">
+
+<h2>Viaturas</h2>
+
+<p>
+Controle demonstrativo de viaturas.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Prefixo</th>
+<th>Tipo</th>
+<th>Setor</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>VTR-01</td>
+<td>Patrulhamento</td>
+<td>Setor Norte</td>
+<td>
+<span class="badge">
+Disponível
+</span>
+</td>
+</tr>
+
+<tr>
+<td>VTR-02</td>
+<td>Patrulhamento</td>
+<td>Setor Sul</td>
+<td>
+<span class="badge">
+Em serviço
+</span>
+</td>
+</tr>
+
+<tr>
+<td>VTR-03</td>
+<td>Apoio</td>
+<td>Área central</td>
+<td>
+<span class="badge">
+Disponível
+</span>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- NOVA OCORRÊNCIA -->
+
+<section id="novo" class="page">
+
+<div class="page-title">
+
+<h2>Nova ocorrência</h2>
+
+<p>
+Criar um registro no ambiente demonstrativo.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>
+Tipo da ocorrência
+</label>
+
+<select
+id="tipoOcorrencia"
+class="input"
+>
+
+<option>Apoio</option>
+<option>Patrulhamento</option>
+<option>Atendimento</option>
+<option>Averiguação</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Local
+</label>
+
+<input
+id="localOcorrencia"
+class="input"
+placeholder="Informe o local"
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Descrição
+</label>
+
+<textarea
+id="descricaoOcorrencia"
+class="input"
+placeholder="Descreva a ocorrência"
+></textarea>
+
+</div>
+
+</div>
+
+
+<button
+class="btn save-btn"
+onclick="criarOcorrencia()"
+>
+REGISTRAR OCORRÊNCIA
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SOBRE -->
+
+<section id="sobre" class="page">
+
+<div class="page-title">
+
+<h2>Sobre</h2>
+
+<p>
+Informações sobre o sistema.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+Sistema PMESP Operacional
+</h3>
+
+<p style="color:#9fb0c7;line-height:1.7">
+
+Este projeto é uma interface demonstrativa
+desenvolvida para estudo, treinamento e
+simulação de um painel operacional.
+
+<br><br>
+
+Não possui integração com sistemas oficiais,
+bancos de dados governamentais ou informações
+reais de policiais, ocorrências ou cidadãos.
+
+</p>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+</section>
+
 
 <script>
-let seconds=0,working=false,timer=null;
-const codes=[['QAP','Na escuta'],['QSL','Entendido / recebido'],['QTH','Localização'],['QRV','À disposição'],['QTI','A caminho'],['TKS','Obrigado']];
-function format(){let h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;return [h,m,s].map(x=>String(x).padStart(2,'0')).join(':')}
-function update(){document.getElementById('time1').textContent=format();document.getElementById('time2').textContent=format()}
-function togglePoint(){working=!working;if(working){timer=setInterval(()=>{seconds++;update()},1000);document.getElementById('mainBtn').textContent='■ ENCERRAR SERVIÇO';document.getElementById('mainBtn').className='danger';document.getElementById('pointBtn').textContent='ENCERRAR PONTO';document.getElementById('pointBtn').className='danger';document.getElementById('pointText').textContent='Turno em andamento'}else{clearInterval(timer);seconds=0;update();document.getElementById('mainBtn').textContent='▶ INICIAR SERVIÇO';document.getElementById('mainBtn').className='primary';document.getElementById('pointBtn').textContent='BATER PONTO';document.getElementById('pointBtn').className='primary';document.getElementById('pointText').textContent='Nenhum turno ativo'}}
-function showPage(id,el){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(el)el.classList.add('active');const titles={dashboard:'Dashboard',ponto:'Controle de Ponto',efetivo:'Efetivo Operacional',vtr:'Central de Viaturas',radio:'Código Q',manual:'Manual RP',ia:'Assistente IA'};document.getElementById('title').textContent=titles[id]}
-function go(id){showPage(id,[...document.querySelectorAll('nav button')].find(b=>b.getAttribute('onclick').includes("'"+id+"'")))}
-function setStatus(s,el){document.getElementById('currentStatus').textContent='● '+s;document.querySelectorAll('.statusBtns button').forEach(b=>b.classList.remove('sel'));el.classList.add('sel')}
-function renderCodes(list=codes){document.getElementById('codes').innerHTML=list.map(c=>`<div class="code"><b>${c[0]}</b><span>${c[1]}</span></div>`).join('')}
-function filterCodes(){let q=document.getElementById('searchCode').value.toLowerCase();renderCodes(codes.filter(c=>(c[0]+c[1]).toLowerCase().includes(q)))}
-function askAI(){let input=document.getElementById('question'),q=input.value.trim();if(!q)return;let chat=document.getElementById('chat');let empty=chat.querySelector('.empty');if(empty)empty.remove();chat.innerHTML+=`<div class="msg"><div class="you">${q}</div><div class="bot"><b>Assistente RP</b><br><br>Esta é uma versão demonstrativa. A resposta definitiva deve utilizar o manual e as regras cadastradas pela administração do seu servidor.</div></div>`;input.value='';chat.scrollTop=chat.scrollHeight}
-renderCodes();
+
+/* LOGIN */
+
+function login(){
+
+const usuario =
+document.getElementById("usuario").value.trim();
+
+const senha =
+document.getElementById("senha").value.trim();
+
+const erro =
+document.getElementById("erroLogin");
+
+if(usuario==="admin" && senha==="1234"){
+
+document.getElementById("loginScreen").style.display="none";
+
+document.getElementById("system").style.display="block";
+
+document.getElementById("nomeUsuario").textContent=usuario;
+
+erro.style.display="none";
+
+}else{
+
+erro.style.display="block";
+
+}
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+document.getElementById("system").style.display="none";
+
+document.getElementById("loginScreen").style.display="flex";
+
+document.getElementById("usuario").value="";
+
+document.getElementById("senha").value="";
+
+}
+
+
+/* TROCAR PÁGINA */
+
+function abrirPagina(pagina,botao){
+
+const paginas=document.querySelectorAll(".page");
+
+paginas.forEach(function(item){
+
+item.classList.remove("active");
+
+});
+
+
+const botoes=document.querySelectorAll(".menu-btn");
+
+botoes.forEach(function(item){
+
+item.classList.remove("active");
+
+});
+
+
+document.getElementById(pagina).classList.add("active");
+
+botao.classList.add("active");
+
+}
+
+
+/* CRIAR OCORRÊNCIA */
+
+function criarOcorrencia(){
+
+const tipo =
+document.getElementById("tipoOcorrencia").value;
+
+const local =
+document.getElementById("localOcorrencia").value.trim();
+
+const descricao =
+document.getElementById("descricaoOcorrencia").value.trim();
+
+
+if(!local || !descricao){
+
+alert("Preencha o local e a descrição.");
+
+return;
+
+}
+
+
+const numero =
+Math.floor(Math.random()*9000)+1000;
+
+
+const tabela =
+document.getElementById("tabelaOcorrencias");
+
+
+const linha =
+document.createElement("tr");
+
+
+linha.innerHTML=`
+
+<td>#${numero}</td>
+
+<td>
+${new Date().toLocaleDateString("pt-BR")}
+</td>
+
+<td>
+${tipo}
+</td>
+
+<td>
+${local}
+</td>
+
+<td>
+<span class="badge">
+Em andamento
+</span>
+</td>
+
+`;
+
+
+tabela.prepend(linha);
+
+
+const total =
+document.getElementById("totalOcorrencias");
+
+
+total.textContent =
+parseInt(total.textContent)+1;
+
+
+alert(
+"Ocorrência registrada com sucesso no ambiente demonstrativo."
+);
+
+
+document.getElementById("localOcorrencia").value="";
+
+document.getElementById("descricaoOcorrencia").value="";
+
+}
+
 </script>
+
 </body>
 </html>
